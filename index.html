@@ -19,32 +19,31 @@
 
         form {
             background-color: #f5f5f5;
-            padding: 30px;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
+            width: 80%;
             text-align: center;
         }
 
         h2 {
             color: #333333;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
-            margin-top: 15px;
+            margin-top: 10px;
             text-align: left;
             font-weight: bold;
             color: #555555;
         }
 
         input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            margin-bottom: 20px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 6px;
@@ -53,11 +52,11 @@
         button {
             background-color: #4caf50;
             color: white;
-            padding: 15px 25px;
+            padding: 12px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             transition: background-color 0.3s ease;
         }
 
@@ -68,7 +67,7 @@
         .checkbox-group {
             display: flex;
             align-items: center;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .checkbox-group label {
@@ -79,6 +78,11 @@
 
         .checkbox-group input {
             margin-left: 10px;
+        }
+
+        #progress-bar {
+            margin-top: 10px;
+            font-size: 18px;
         }
 
         .name-container {
@@ -93,9 +97,6 @@
 </head>
 <body>
     <form id="signupForm" onsubmit="return validateForm()">
-        <!-- Add this where you want the progress bar to appear -->
-<div id="progress-bar"></div>
-
         <h2>Combat Interactive Playtest Signup</h2>
         
         <div class="name-container">
@@ -123,7 +124,7 @@
 
         <label for="country">Country:</label>
         <select id="country" name="country" required>
-            <option value="Afghanistan">Afghanistan</option>
+<option value="Afghanistan">Afghanistan</option>
 <option value="Albania">Albania</option>
 <option value="Algeria">Algeria</option>
 <option value="Andorra">Andorra</option>
@@ -318,6 +319,7 @@
 <option value="Yemen">Yemen</option>
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
+
         </select>
 
         <label for="postal-code">Postal Code:</label>
@@ -334,43 +336,45 @@
         </div>
 
         <button type="submit">Sign Up</button>
+
+        <!-- Progress Bar -->
+        <div id="progress-bar"></div>
     </form>
 
     <script>
-    var progressBar = document.getElementById('progress-bar');
-    var filledFields = 0;
+        var progressBar = document.getElementById('progress-bar');
+        var filledFields = 0;
 
-    function updateProgressBar() {
-        filledFields++;
-        var progress = (filledFields / 9) * 100; // There are 9 fields in total
-        progressBar.textContent = '/'.repeat(progress / 2); // Adjusting for the max progress
-    }
-
-    function validateForm() {
-        var name = document.getElementById('name').value;
-        var surname = document.getElementById('surname').value;
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        var confirmPassword = document.getElementById('confirm-password').value;
-        var dob = document.getElementById('dob').value;
-        var address = document.getElementById('address').value;
-        var country = document.getElementById('country').value;
-        var postalCode = document.getElementById('postal-code').value;
-
-        if (
-            name === '' || surname === '' || email === '' ||
-            password === '' || confirmPassword === '' || dob === '' ||
-            address === '' || country === '' || postalCode === ''
-        ) {
-            alert('All fields are required.');
-            return false;
+        function updateProgressBar() {
+            filledFields++;
+            var progress = (filledFields / 9) * 100; // There are 9 fields in total
+            progressBar.textContent = '/'.repeat(progress / 2); // Adjusting for the max progress
         }
 
-        updateProgressBar();
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var surname = document.getElementById('surname').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            var dob = document.getElementById('dob').value;
+            var address = document.getElementById('address').value;
+            var country = document.getElementById('country').value;
+            var postalCode = document.getElementById('postal-code').value;
 
-        return true;
-    }
-</script>
+            if (
+                name === '' || surname === '' || email === '' ||
+                password === '' || confirmPassword === '' || dob === '' ||
+                address === '' || country === '' || postalCode === ''
+            ) {
+                alert('All fields are required.');
+                return false;
+            }
 
+            updateProgressBar();
+
+            return true;
+        }
+    </script>
 </body>
 </html>
