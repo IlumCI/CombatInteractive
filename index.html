@@ -93,6 +93,9 @@
 </head>
 <body>
     <form id="signupForm" onsubmit="return validateForm()">
+        <!-- Add this where you want the progress bar to appear -->
+<div id="progress-bar"></div>
+
         <h2>Combat Interactive Playtest Signup</h2>
         
         <div class="name-container">
@@ -334,25 +337,40 @@
     </form>
 
     <script>
-        function validateForm() {
-            var name = document.getElementById('name').value;
-            var surname = document.getElementById('surname').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-            var dob = document.getElementById('dob').value;
-            var address = document.getElementById('address').value;
-            var country = document.getElementById('country').value;
-            var postalCode = document.getElementById('postal-code').value;
+    var progressBar = document.getElementById('progress-bar');
+    var filledFields = 0;
 
-            if (name === '' || surname === '' || email === '' || password === '' || confirmPassword === '' ||
-                dob === '' || address === '' || country === '' || postalCode === '') {
-                alert('All fields are required.');
-                return false;
-            }
+    function updateProgressBar() {
+        filledFields++;
+        var progress = (filledFields / 9) * 100; // There are 9 fields in total
+        progressBar.textContent = '/'.repeat(progress / 2); // Adjusting for the max progress
+    }
 
-            return true;
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        var surname = document.getElementById('surname').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
+        var dob = document.getElementById('dob').value;
+        var address = document.getElementById('address').value;
+        var country = document.getElementById('country').value;
+        var postalCode = document.getElementById('postal-code').value;
+
+        if (
+            name === '' || surname === '' || email === '' ||
+            password === '' || confirmPassword === '' || dob === '' ||
+            address === '' || country === '' || postalCode === ''
+        ) {
+            alert('All fields are required.');
+            return false;
         }
-    </script>
+
+        updateProgressBar();
+
+        return true;
+    }
+</script>
+
 </body>
 </html>
