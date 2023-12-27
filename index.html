@@ -80,10 +80,6 @@
             margin-left: 10px;
         }
 
-        #progress-bar {
-            margin-top: 10px;
-            font-size: 18px;
-        }
 
         .name-container {
             display: flex;
@@ -329,19 +325,9 @@
 
         <button type="submit">Sign Up</button>
 
-        <!-- Progress Bar -->
-        <div id="progress-bar"></div>
     </form>
 
     <script>
-        var progressBar = document.getElementById('progress-bar');
-        var filledFields = 0;
-
-        function updateProgressBar() {
-            filledFields++;
-            var progress = (filledFields / 9) * 100; // There are 9 fields in total
-            progressBar.textContent = '/'.repeat(progress / 2); // Adjusting for the max progress
-        }
 
         function validateForm() {
             var name = document.getElementById('name').value;
@@ -362,8 +348,6 @@
                 alert('All fields are required.');
                 return false;
             }
-
-            updateProgressBar();
 
             return true;
         }
