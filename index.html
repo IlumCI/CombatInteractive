@@ -322,17 +322,9 @@
 
         </select>
 
-        <label for="postal-code">Postal Code:</label>
-        <input type="text" id="postal-code" name="postal-code" required>
-
         <div class="checkbox-group">
             <label for="terms-checkbox">I agree to the Terms of Service</label>
             <input type="checkbox" id="terms-checkbox" name="terms" required>
-        </div>
-
-        <div class="checkbox-group">
-            <label for="subscribe-checkbox">Subscribe to receive emails, offers, and promotional content</label>
-            <input type="checkbox" id="subscribe-checkbox" name="subscribe">
         </div>
 
         <button type="submit">Sign Up</button>
@@ -360,12 +352,12 @@
             var dob = document.getElementById('dob').value;
             var address = document.getElementById('address').value;
             var country = document.getElementById('country').value;
-            var postalCode = document.getElementById('postal-code').value;
+            
 
             if (
                 name === '' || surname === '' || email === '' ||
                 password === '' || confirmPassword === '' || dob === '' ||
-                address === '' || country === '' || postalCode === ''
+                address === '' || country === ''
             ) {
                 alert('All fields are required.');
                 return false;
