@@ -6,7 +6,7 @@
     <title>Combat Interactive Playtest Signup</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,41 +18,47 @@
         }
 
         form {
-            background-color: #ffffff;
-            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
             text-align: center;
-            opacity: 0.9;
         }
 
         h2 {
             color: #333333;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-top: 10px;
+            margin-top: 15px;
+            text-align: left;
+            font-weight: bold;
+            color: #555555;
         }
 
         input {
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         button {
             background-color: #4caf50;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -60,13 +66,21 @@
         }
 
         #terms {
-            margin-top: 10px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        #terms label {
+            display: inline;
+            margin-left: 5px;
+            color: #555555;
         }
     </style>
 </head>
 <body>
     <form>
         <h2>Combat Interactive Playtest Signup</h2>
+        
         <label for="name">Full Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -79,8 +93,10 @@
         <label for="confirm-password">Confirm Password:</label>
         <input type="password" id="confirm-password" name="confirm-password" required>
 
-        <input type="checkbox" id="terms" name="terms" required>
-        <label for="terms">I agree to the Terms of Service</label>
+        <div id="terms">
+            <input type="checkbox" id="terms-checkbox" name="terms" required>
+            <label for="terms-checkbox">I agree to the Terms of Service</label>
+        </div>
 
         <button type="submit">Sign Up</button>
     </form>
