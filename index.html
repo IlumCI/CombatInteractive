@@ -65,20 +65,25 @@
             background-color: #45a049;
         }
 
-        #terms {
+        .checkbox-group {
+            display: flex;
+            align-items: center;
             margin-top: 15px;
-            text-align: left;
         }
 
-        #terms label {
-            display: inline;
-            margin-left: 5px;
+        .checkbox-group label {
+            flex: 1;
+            text-align: left;
             color: #555555;
+        }
+
+        .checkbox-group input {
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
-    <form>
+    <form id="signupForm" onsubmit="return validateForm()">
         <h2>Combat Interactive Playtest Signup</h2>
         
         <label for="name">Full Name:</label>
@@ -93,12 +98,33 @@
         <label for="confirm-password">Confirm Password:</label>
         <input type="password" id="confirm-password" name="confirm-password" required>
 
-        <div id="terms">
-            <input type="checkbox" id="terms-checkbox" name="terms" required>
+        <div class="checkbox-group">
             <label for="terms-checkbox">I agree to the Terms of Service</label>
+            <input type="checkbox" id="terms-checkbox" name="terms" required>
+        </div>
+
+        <div class="checkbox-group">
+            <label for="subscribe-checkbox">Subscribe to receive emails, offers, and promotional content</label>
+            <input type="checkbox" id="subscribe-checkbox" name="subscribe">
         </div>
 
         <button type="submit">Sign Up</button>
     </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+
+            if (name === '' || email === '' || password === '' || confirmPassword === '') {
+                alert('All fields are required.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>
